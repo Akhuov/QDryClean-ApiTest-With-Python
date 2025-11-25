@@ -23,4 +23,6 @@ def logged_client():
     assert response.status_code == 200, response.text
     assert response.json()["token"] is not None, "response is None"
 
+    client.set_token(response.json()["token"])
+
     return client
