@@ -1,28 +1,16 @@
 import os
 import pytest
 from dotenv import load_dotenv
-from core.api_client import ApiClient
 
-
-@pytest.fixture
-def logged_client():
+@pytest.fixture(scope="session")
+def settings():
     load_dotenv()
-
-    base_url = os.getenv('BASE_URL')
+    back_end_url = os.getenv('BACK_END_URL')
+    front_end_url = os.getenv('FRONT_END_URL')
     login = os.getenv('TEST_LOGIN')
     password = os.getenv('TEST_PASSWORD')
-    
-    payload = {
-        "logIn": login,
-        "password": password
-    }
+    state_path = os.getenv('STORAGE_STATE_PATH')
 
-    client = ApiClient(base_url)
-    response = client.post("/auth", payload)
-
-    assert response.status_code == 200, response.text
-    assert response.json()["token"] is not None, "response is None"
-
-    client.set_token(response.json()["token"])
-
-    return client
+    return dict(back_end_url=back_end_url, login=login,
+                password=password, state_path=state_path,
+                front_end_url=front_end_url)

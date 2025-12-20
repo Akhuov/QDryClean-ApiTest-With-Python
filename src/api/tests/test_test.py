@@ -1,4 +1,5 @@
-from utils.allure_utils import attach_response
+from core.allure.allure_utils import attach_response
+from core.utils.faker_utils import generate_random_text
 
 
 def test_test(logged_client):
@@ -7,8 +8,8 @@ def test_test(logged_client):
     payload = {
         "firstName": "string",
         "lastName": "string",
-        "phoneNumber": "11",
-        "additionalPhoneNumber": "test1",
+        "phoneNumber": generate_random_text('test'),
+        "additionalPhoneNumber": generate_random_text('test'),
         "points": 0
     }
 

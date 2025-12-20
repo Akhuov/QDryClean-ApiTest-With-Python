@@ -1,3 +1,4 @@
 .env
 allure-results
 .idea
+.auth
