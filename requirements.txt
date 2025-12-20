@@ -1,6 +1,7 @@
 python-dotenv == 1.2.1
-pytest == 9.0.1
+pytest == 9.0.2
 requests == 2.32.5
-allure-pytest == 2.15.0
-allure-python-commons == 2.15.0
+allure-pytest == 2.15.2
+allure-python-commons == 2.15.2
 pytest-env == 1.2.0
+pydantic == 2.12.5
