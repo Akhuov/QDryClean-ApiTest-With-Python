@@ -1,7 +1,7 @@
 import os
 import pytest
-from core.api_client import ApiClient
 from dotenv import load_dotenv
+from core.api_client import ApiClient
 
 
 @pytest.fixture
@@ -18,7 +18,7 @@ def logged_client():
     }
 
     client = ApiClient(base_url)
-    response = client.post("/Auth", payload)
+    response = client.post("/auth", payload)
 
     assert response.status_code == 200, response.text
     assert response.json()["token"] is not None, "response is None"

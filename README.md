@@ -1,72 +1,94 @@
-# QDryClean-QA-Automation-Framework
-A clean and structured Python-based QA automation framework for the QDryCleaning service (Pytest, Playwright, Requests, Allure)
-## Installing
+# QDryClean QA Automation Framework
 
-Pull the report and create virtual env
-```shell
-> python3 -m venv venv
-> source venv/bin/activate
+A clean and structured Python-based QA automation framework for **QDryCleaning** service.  
+Technologies used: **Pytest**, **Playwright**, **Requests**, **Allure**.
+
+---
+
+## Table of Contents
+- [Installation](#installation)
+- [Running Tests](#running-tests)
+- [Parallel Test Execution](#parallel-test-execution)
+- [Repeating Tests](#repeating-tests)
+- [Linting with Ruff](#linting-with-ruff)
+- [Generating Reports](#generating-reports)
+- [References](#references)
+---
+
+## Installation
+
+1. Clone the repository and create a virtual environment:
+```cmd
+python -m venv venv
+venv\Scripts\activate
 ```
 
-Install required packages
-```shell
-> pip install playwright pytest pytest-playwright
-```
+2. Install all required packages using ***requirements.txt***:
 
-Install Browsers:
-```shell
+```cmd
+pip install -r requirements.txt
+```
+* requirements.txt includes all mandatory libraries:
+  * playwright (for browser automation)
+  * pytest (test runner)
+  * pytest-playwright (Playwright plugin for pytest)
+  * requests (API testing)
+  * python-dateutil (date handling)
+  * pytest-xdist (parallel test execution)
+  * pytest-repeat (repeating tests)
+  * ruff (code linting)
+  * "allure-pytest (Allure reporting)"
+
+3. Install Browsers:
+```cmd
 playwright install
 ```
-If you are linux user, install dependencies:
-```shell
-playwright install-deps
-```
-Install python-dateutil to work with date formats
-```shell
-pip install python-dateutil
-```
 
-# Running
-```shell
+---
+
+# Running Tests
+Run all tests:
+```cmd
 pytest
 ```
 
-# To run multiple tests in parallel, install the pytest-xdist plugin:
-```shell
-pip install pytest-xdist
+Run with verbose output and short traceback:
+```cmd
+pytest -v --tb=short
 ```
-# Then, use the -n option followed by the number of parallel workers (e.g., 4):
-```shell
+---
+
+# Parallel Test Execution
+Run tests in parallel (uses pytest-xdist from requirements.txt):
+```cmd
 pytest -n 4
 ```
-# If you want run one test more times download pytest-repeat 
-```shell
-pip install pytest-repeat
-```
-and run with --count n
-```shell
+-n 4 — runs tests on 4 parallel workers.
+
+---
+
+# Repeating Tests
+Run a test multiple times (uses pytest-repeat from requirements.txt):
+```cmd
 pytest --count=5
 ```
-# use parallel workers with view details on terminal
-```shell
-pytest -n 2 -v --tb=short 
-```
-This will distribute your test suite across 4 parallel processes, reducing execution time.
 
-# install ruff 
-```shell
-pip install ruff
+# Linting with Ruff
+Ruff helps keep your code clean and consistent (installed via requirements.txt):
+```cmd
+ruff check .          # check code
+ruff check . --fix    # check and automatically fix issues
 ```
-Ruff is a fast Python linter that keeps code clean and consistent
+---
 
-# To run ruff
-```shell
-ruff check . # to check
-ruff check . --fix # to check and fix
+# Generating Reports
+Run tests with an HTML report:
+```cmd
+pytest --template=html1/index.html --report=reports\file_name.html
 ```
+---
+# References
+* [Playwright Python CLI Options](https://playwright.dev/python/docs/test-runners#cli-arguments)
+* [Allure Pytest Documentation](https://docs.qameta.io/allure/#_pytest)
 
-# To run with report generation
-```shell
- pytest --template=html1/index.html  --report=reports/file_name.html
-```
-Check documentation for pytest options [here](https://playwright.dev/python/docs/test-runners#cli-arguments)
+***Happy Testing! 🚀***
