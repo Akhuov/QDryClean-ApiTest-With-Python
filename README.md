@@ -1,7 +1,5 @@
-# QDryCleaning-ApiTest-With-Python
-A clean and structured Python-based API automation framework for the QDryCleaning service (Pytest, Requests, Allure)
-# Facility UI tests
-
+# QDryClean-QA-Automation-Framework
+A clean and structured Python-based QA automation framework for the QDryCleaning service (Pytest, Playwright, Requests, Allure)
 ## Installing
 
 Pull the report and create virtual env
