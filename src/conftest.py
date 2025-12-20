@@ -1,6 +1,6 @@
 import os
 import pytest
-from core.api_client import ApiClient
+from core import ApiClient
 from dotenv import load_dotenv
 
 
